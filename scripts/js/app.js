@@ -1,4 +1,4 @@
-import { DateNumberChart } from './DateNumberChart.js';
+import { ExchangeRateChartControl } from './ExchangeRateChartControl.js';
 import { ExchangeRateService } from './ExchangeRatesService.js';
 import { NavHeaderControl } from './NavHeaderControl.js';
 class App {
@@ -8,7 +8,7 @@ class App {
     }
     Run() {
         this.controls.push(new NavHeaderControl(document.querySelector('section.opening-section header')));
-        this.controls.push(this.exchangeRateChart = new DateNumberChart(document.querySelector('section.exchange-section .chart-control')));
+        this.controls.push(this.exchangeRateChart = new ExchangeRateChartControl(document.querySelector('section.exchange-section .chart-control')));
         for (const control of this.controls) {
             control.initialize();
         }
