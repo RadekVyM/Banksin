@@ -82,16 +82,19 @@ section.ad-section .transaction-container .transaction-text .cards-container > d
     background: var(--primary-light-color);
 }
 
-section.ad-section .transaction-container .transaction-text .cards-container > div .icon-div {
+section.ad-section .icon-div {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: radial-gradient(var(--light-green-color), var(--green-color) 60%);
+    box-shadow: 0 0.5rem 2rem -0.6rem var(--light-green-color);
+}
+
+section.ad-section .transaction-container .transaction-text .cards-container > div .icon-div {
     margin: 0.5rem 0 3rem 0;
     width: 3rem;
     height: 3rem;
     border-radius: 1.5rem;
-    background-image: radial-gradient(var(--light-green-color), var(--green-color) 60%);
-    box-shadow: 0 0.5rem 2rem -0.6rem var(--light-green-color);
 }
 
 section.ad-section .transaction-container .transaction-text .cards-container > div img {
@@ -172,6 +175,41 @@ section.ad-section .why-invest-container .investment-container h2 {
     text-align: center;
 }
 
+section.ad-section .why-invest-container .investment-container .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+}
+
+section.ad-section .why-invest-container .investment-container .cards-container > div {
+    display: grid;
+    grid-template-rows: 12rem auto;
+    justify-items: center;
+    align-items: center;
+    padding: 2rem;
+    background: var(--secondary-dark-color);
+}
+
+section.ad-section .why-invest-container .investment-container .cards-container > div .icon-div {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 3rem;
+}
+
+section.ad-section .why-invest-container .investment-container .cards-container > div img {
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+}
+
+section.ad-section .why-invest-container .investment-container .cards-container > div span {
+    margin: 1rem;
+    font-weight: 600;
+    color: var(--primary-light-color);
+    text-align: center;
+}
 
 @media (max-width: 1300px) {
 

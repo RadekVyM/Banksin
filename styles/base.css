@@ -50,7 +50,8 @@ section.opening-section .reviews-container,
 section.opening-section .opening-container,
 section.ad-section .transaction-container,
 section.ad-section .ads-container,
-section.ad-section .why-invest-container .investment-container {
+section.ad-section .why-invest-container .investment-container,
+section.exchange-section {
     padding: var(--desktop-side-padding);
 }
 

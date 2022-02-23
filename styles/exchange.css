@@ -1,0 +1,49 @@
+section.exchange-section .chart-control {
+    position: relative;
+    isolation: isolate;
+}
+
+section.exchange-section .chart-control .chart-svg {
+    width: max-content;
+    aspect-ratio: 1/1;
+}
+
+section.exchange-section .chart-control .chart-svg polyline {
+    fill: none;
+    stroke: black;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 0.1rem;
+    shape-rendering: geometricPrecision;
+}
+
+section.exchange-section .chart-control .chart-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background: var(--green-color);
+    pointer-events: none;
+    transition: top 200ms ease;
+}
+
+section.exchange-section .chart-control .chart-info.hidden {
+    display: none;
+}
+
+section.exchange-section .chart-control .chart-info-dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+    background: var(--green-color);
+    pointer-events: none;
+}
+
+section.exchange-section .chart-control .chart-info-dot.hidden {
+    display: none;
+}
