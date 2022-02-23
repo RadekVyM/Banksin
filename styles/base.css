@@ -1,0 +1,94 @@
+:root {
+    --desktop-side-padding: 0 8rem;
+    
+    --primary-light-color: #ffffff;
+    --primary-dark-color: #1B2534;
+    --secondary-dark-color: #353E4C;
+    --primary-light-text-color: #ffffff;
+    --secondary-text-color: #8B9198;
+    --green-color: #54B862;
+    --light-green-color: #73D287;
+    --orange-color: #FF6A28;
+    --light-orange-color: #ff7940;
+
+    --larges-font-size: 4rem;
+    --mid-font-size: 1.4rem;
+
+    --logo-url: url('../images/logo.png');
+    --ios-logo-url: url('../images/ios.png');
+    --android-logo-url: url('../images/android.png');
+    --up-arrow-url: url('../images/up-arrow.png');
+}
+
+::selection {
+    color: var(--primary-light-text-color);
+    background: var(--light-orange-color);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    isolation: isolate;
+}
+
+section.opening-section header,
+section.opening-section .reviews-container,
+section.opening-section .opening-container,
+section.ad-section .transaction-container,
+section.ad-section .ads-container {
+    padding: var(--desktop-side-padding);
+}
+
+small {
+    font-weight: 600;
+}
+
+small::before {
+    content: '—';
+    margin-left: 0.3rem;
+    margin-right: 0.75rem;
+}
+
+@media (max-width: 1100px) {
+    :root {
+        --desktop-side-padding: 0 7rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --desktop-side-padding: 0 5.5rem;
+    }
+}
+
+@media (max-width: 950px) {
+    :root {
+        --desktop-side-padding: 0 4rem;
+    }
+}
+
+@media (max-width: 700px) {
+    :root {
+        --larges-font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 610px) {
+    :root {
+        --larges-font-size: 2.5rem;
+        --desktop-side-padding: 0 2rem;
+    }
+}

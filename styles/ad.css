@@ -1,0 +1,123 @@
+section.ad-section {
+    margin-top: 6rem;
+}
+
+section.ad-section .transaction-container {
+    display: flex;
+    gap: 4rem;
+}
+
+section.ad-section .transaction-container .transaction-photo {
+    display: grid;
+    align-items: flex-end;
+    width: 40%;
+    max-height: 50rem;
+    overflow-y: hidden;
+}
+
+section.ad-section .transaction-container .transaction-photo .transaction-photo-back {
+    isolation: isolate;
+    grid-area: 1 / 1 / 1 / 1;
+    width: 100%;
+    height: 92%;
+    background: var(--primary-dark-color);
+}
+
+section.ad-section .transaction-container .transaction-photo .transaction-photo-back::before {
+    grid-area: 1 / 1 / 1 / 1;
+    content: '';
+    z-index: -1;
+    position: absolute;
+    left: 15%;
+    top: 10%;
+    width: 10%;
+    aspect-ratio: 1/1;
+    border: 2rem var(--green-color) solid;
+    border-radius: 50%;
+}
+
+section.ad-section .transaction-container .transaction-photo img {
+    justify-self: end;
+    position: relative;
+    grid-area: 1 / 1 / 1 / 1;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+section.ad-section .transaction-container .transaction-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    width: 50%;
+}
+
+section.ad-section .transaction-container .transaction-text small {
+    color: var(--orange-color);
+}
+
+section.ad-section .transaction-container .transaction-text small::before {
+    color: var(--orange-color);
+}
+
+section.ad-section .transaction-container .transaction-text h2 {
+    color: var(--primary-dark-color);
+    font-size: var(--larges-font-size);
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+section.ad-section .transaction-container .transaction-text p {
+    color: var(--secondary-text-color);
+}
+
+section.ad-section .transaction-container .transaction-text .cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    background-image: radial-gradient(#ECF0F5, var(--primary-light-color));
+}
+
+section.ad-section .transaction-container .transaction-text .cards-container > div {
+    margin: 1rem 0;
+    padding: 1.5rem;
+    background: var(--primary-light-color);
+}
+
+section.ad-section .transaction-container .transaction-text .cards-container > div .icon-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0 3rem 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    background-image: radial-gradient(var(--light-green-color), var(--green-color) 60%);
+    box-shadow: 0 0.5rem 2rem -0.6rem var(--light-green-color);
+}
+
+section.ad-section .transaction-container .transaction-text .cards-container > div img {
+    width: 1rem;
+}
+
+section.ad-section .transaction-container .transaction-text .cards-container > div h3 {
+    font-size: 1.18rem;
+    font-weight: 600;
+}
+
+section.ad-section .ads-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin: 6rem 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+section.ad-section .ads-container img {
+    width: min-content;
+    height: fit-content;
+}

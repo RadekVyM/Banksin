@@ -1,0 +1,284 @@
+section.opening-section {
+    background-image: radial-gradient(at 90%, var(--secondary-dark-color), var(--primary-dark-color) 60%);
+    overflow: hidden;
+}
+
+section.opening-section::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    left: -35vw;
+    top: -35vw;
+    width: 65vw;
+    height: 65vw;
+    border: 6rem #262e3d86 solid;
+    border-radius: 50%;
+}
+
+/* HEADER */
+
+section.opening-section header {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: space-between;
+    align-items: center;
+    height: 8rem;
+    width: 100%;
+    border-bottom: 2px #4B525F solid;
+}
+
+section.opening-section header .logo {
+    display: flex;
+    align-items: center;
+    color: var(--primary-light-text-color);
+}
+
+section.opening-section header .logo::before {
+    content: var(--logo-url);
+    margin-top: 5px;
+    margin-right: 0.75rem;
+}
+
+section.opening-section header nav ul {
+    display: flex;
+    gap: 2rem;
+    justify-items: auto;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+section.opening-section header nav ul a {
+    text-decoration: none;
+    color: var(--secondary-text-color);
+}
+
+section.opening-section header nav ul a:hover,
+section.opening-section header nav ul a.nav-active-link {
+    color: var(--primary-light-text-color);
+}
+
+section.opening-section header #hamburger-button {
+    background: transparent;
+    color: var(--primary-light-text-color);
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+    display: none;
+}
+
+/* OPENING CONTAINER */
+
+section.opening-section .opening-container {
+    min-height: 45rem;
+}
+
+section.opening-section .opening-container .opening-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    width: 50%;
+    padding: 7rem 0;
+}
+
+section.opening-section .opening-container .opening-text small {
+    color: var(--primary-light-text-color);
+}
+
+section.opening-section .opening-container .opening-text small::before {
+    color: var(--secondary-text-color);
+}
+
+section.opening-section .opening-container .opening-text h1 {
+    font-size: var(--larges-font-size);
+    font-weight: 600;
+    color: var(--primary-light-text-color);
+}
+
+section.opening-section .opening-container .opening-text p {
+    font-size: var(--mid-font-size);
+    color: var(--secondary-text-color);
+}
+
+section.opening-section .opening-container .opening-text .download-container {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    isolation: isolate;
+    position: relative;
+}
+
+section.opening-section .opening-container .opening-text .download-container::after {
+    content: var(--up-arrow-url);
+    position: absolute;
+    left: calc(100% - 2rem);
+    bottom: 30%;
+}
+
+section.opening-section .opening-container .opening-text .download-container a div {
+    font-weight: 600;
+    color: var(--primary-light-text-color);
+}
+
+section.opening-section .opening-container .opening-text .download-container .download-ios div::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 0.5rem;
+    background-image: var(--ios-logo-url);
+    background-repeat: no-repeat;
+    background-size: auto 1rem;
+    height: 1rem;
+    width: 1rem;
+}
+
+section.opening-section .opening-container .opening-text .download-container .download-android div::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 0.5rem;
+    background-image: var(--android-logo-url);
+    background-repeat: no-repeat;
+    background-size: auto 1rem;
+    height: 1rem;
+    width: 1rem;
+}
+
+section.opening-section #phone-img {
+    position: absolute;
+    right: 0;
+    bottom: 4rem;
+    margin: var(--desktop-side-padding);
+    max-width: 100%;
+    max-height: 43rem;
+    filter: drop-shadow(0 2rem 1.5rem rgba(0, 0, 0, 0.205));
+}
+
+/* REVIEWS CONTAINER */
+
+section.opening-section .reviews-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 10rem;
+    background: var(--green-color);
+}
+
+section.opening-section .reviews-container p {
+    font-size: var(--mid-font-size);
+    font-weight: 600;
+    color: var(--primary-light-text-color);
+}
+
+section.opening-section .reviews-container .stars-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+section.opening-section .reviews-container .stars-container svg {
+    width: 1.6rem;
+    color: #FBD23C;
+}
+
+section.opening-section .reviews-container .stars-container svg.empty-star {
+    color: var(--primary-light-text-color);
+}
+
+
+@media (min-width: 1800px) {
+    section.opening-section .opening-container .opening-text .download-container::after {
+        content: '';
+    }
+}
+
+@media (max-width: 1300px) {
+    section.opening-section .opening-container {
+        min-height: 0;
+    }
+
+    section.opening-section .opening-container .opening-text {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        padding-bottom: 0;
+    }
+
+    section.opening-section .opening-container .opening-text .download-container::after {
+        content: '';
+    }
+
+    section.opening-section #phone-img {
+        position: relative;
+        align-self: center;
+        bottom: -5rem;
+        margin: 0;
+    }
+
+    section.opening-section .reviews-container {
+        padding-top: 5rem;
+        height: 15rem;
+        background: var(--green-color);
+    }
+}
+
+@media (max-width: 1240px) {
+    section.opening-section header #hamburger-button {
+        display: flex;
+        justify-self: end;
+    }
+
+    section.opening-section header {
+        display: grid;
+        grid-template-columns: auto 5rem;
+        grid-template-rows: 8rem auto auto;
+        gap: 0;
+        overflow: hidden;
+    }
+
+    section.opening-section header nav {
+        grid-area: 2 / 1 / 2 / 3;
+    }
+
+    section.opening-section header nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    section.opening-section header #header-login-button-link {
+        grid-area: 3 / 1 / 3 / 3;
+        width: min-content;
+        margin: 3rem 0;
+    }
+
+    section.opening-section header.expanded {
+        height: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    section.opening-section::before {
+        display: none;
+    }
+}
+
+@media (max-width: 610px) {
+    section.opening-section .opening-container .opening-text .download-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    section.opening-section #phone-img {
+        max-height: 35rem;
+    }
+
+    section.opening-section .reviews-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding-top: 7.5rem;
+    }
+}

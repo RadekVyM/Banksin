@@ -1,0 +1,34 @@
+.border-button-link, .orange-button-link, .gray-button-link {
+    padding: 1rem 1.75rem;
+    border-radius: 3rem;
+    text-decoration: none;
+    color: var(--primary-light-text-color);
+}
+
+.gray-button-link {
+    background: #4B525F;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.gray-button-link:hover {
+    background: #5a616e;
+}
+
+.border-button-link {
+    border: 1px var(--secondary-text-color) solid;
+}
+
+.border-button-link:hover {
+    background: #75727238;
+}
+
+.orange-button-link {
+    background: var(--orange-color);
+    box-shadow: 0 0.5rem 2rem -0.9rem var(--orange-color);
+}
+
+.orange-button-link:hover {
+    background: var(--light-orange-color);
+    box-shadow: 0 0.5rem 2rem -0.6rem var(--orange-color);
+}
