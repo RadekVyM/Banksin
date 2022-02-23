@@ -10,12 +10,13 @@ section.ad-section .transaction-container {
 section.ad-section .transaction-container .transaction-photo {
     display: grid;
     align-items: flex-end;
-    width: 40%;
+    width: max-content;
     max-height: 50rem;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 section.ad-section .transaction-container .transaction-photo .transaction-photo-back {
+    position: relative;
     isolation: isolate;
     grid-area: 1 / 1 / 1 / 1;
     width: 100%;
@@ -30,7 +31,7 @@ section.ad-section .transaction-container .transaction-photo .transaction-photo-
     position: absolute;
     left: 15%;
     top: 10%;
-    width: 10%;
+    width: 5rem;
     aspect-ratio: 1/1;
     border: 2rem var(--green-color) solid;
     border-radius: 50%;
@@ -62,9 +63,6 @@ section.ad-section .transaction-container .transaction-text small::before {
 
 section.ad-section .transaction-container .transaction-text h2 {
     color: var(--primary-dark-color);
-    font-size: var(--larges-font-size);
-    font-weight: 600;
-    line-height: 1.1;
 }
 
 section.ad-section .transaction-container .transaction-text p {
@@ -120,4 +118,97 @@ section.ad-section .ads-container {
 section.ad-section .ads-container img {
     width: min-content;
     height: fit-content;
+}
+
+section.ad-section .why-invest-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr auto;
+}
+
+section.ad-section .why-invest-container .why-container {
+    grid-area: 1 / 1 / 3 / 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: var(--desktop-side-padding);
+    padding: 3.5rem;
+    background: var(--primary-light-color);
+}
+
+section.ad-section .why-invest-container .why-container small {
+    color: var(--orange-color);
+}
+
+section.ad-section .why-invest-container .why-container p,
+section.ad-section .why-invest-container .why-container span {
+    font-size: 2.8rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+section.ad-section .why-invest-container .why-container span {
+    color: var(--green-color);
+}
+
+section.ad-section .why-invest-container::before {
+    content: '';
+    grid-area: 2 / 1 / 4 / 1;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(at 10%, var(--secondary-dark-color), var(--primary-dark-color) 60%);
+}
+
+section.ad-section .why-invest-container .investment-container {
+    grid-area: 3 / 1 / 4 / 1;
+}
+
+section.ad-section .why-invest-container .investment-container h2 {
+    margin: auto;
+    margin-block: 5rem;
+    width: fit-content;
+    color: var(--primary-light-color);
+    font-size: var(--large-font-size);
+    text-align: center;
+}
+
+
+@media (max-width: 1300px) {
+
+}
+
+@media (max-width: 1000px) {
+    section.ad-section .transaction-container {
+        flex-direction: column;
+    }
+
+    section.ad-section .transaction-container .transaction-text {
+        width: 100%;
+    }
+
+    section.ad-section .transaction-container .transaction-photo {
+        width: 100%;
+    }
+}
+
+@media (max-width: 800px) {
+    section.ad-section .why-invest-container .why-container {
+        padding: 2.8rem;
+    }
+
+    section.ad-section .why-invest-container .why-container p,
+    section.ad-section .why-invest-container .why-container span {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 610px) {
+    section.ad-section .why-invest-container .why-container {
+        padding: 2rem;
+    }
+
+    section.ad-section .why-invest-container .why-container p,
+    section.ad-section .why-invest-container .why-container span {
+        font-size: 1.6rem;
+    }
 }

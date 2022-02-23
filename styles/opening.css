@@ -92,7 +92,7 @@ section.opening-section .opening-container .opening-text small::before {
 }
 
 section.opening-section .opening-container .opening-text h1 {
-    font-size: var(--larges-font-size);
+    font-size: var(--largest-font-size);
     font-weight: 600;
     color: var(--primary-light-text-color);
 }
