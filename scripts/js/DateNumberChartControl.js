@@ -1,8 +1,8 @@
 import { DateHelper } from "./DateHelper.js";
 export class DateNumberChartControl {
     constructor(element) {
-        this.viewBoxWidth = 500;
-        this.viewBoxHeight = 500;
+        this.viewBoxWidth = 600;
+        this.viewBoxHeight = 400;
         this.chartMarginTop = 2;
         this.chartMarginBottom = 2;
         this.chartMarginLeft = 3;
@@ -14,6 +14,11 @@ export class DateNumberChartControl {
         this.svg = this.baseDiv.querySelector('svg');
         this.infoDiv = this.baseDiv.querySelector('.chart-info');
         this.infoDotDiv = this.baseDiv.querySelector('.chart-info-dot');
+        this.columnInfoDiv = this.baseDiv.querySelector('.chart-column-info');
+        this.rowInfoDiv = this.baseDiv.querySelector('.chart-row-info');
+    }
+    get info_values_difference() {
+        return parseFloat(this.baseDiv.getAttribute('data-info-values-difference') || '1.0');
     }
     initialize() {
         this.svg.setAttribute('viewBox', `0 0 ${this.viewBoxWidth} ${this.viewBoxHeight}`);
@@ -29,6 +34,8 @@ export class DateNumberChartControl {
     }
     redraw() {
         this.svg.querySelectorAll('*').forEach(n => n.remove());
+        this.columnInfoDiv.querySelectorAll('*').forEach(n => n.remove());
+        this.rowInfoDiv.querySelectorAll('*').forEach(n => n.remove());
         this.chartDomPoints = [];
         const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
         const totalDaysCount = this.getTotalDaysCount(this.values[0].date, this.values[this.values.length - 1].date);
@@ -43,8 +50,8 @@ export class DateNumberChartControl {
             if (pair.value > maxValue)
                 maxValue = pair.value;
         }
-        minValue = Math.floor(minValue * 4) / 4;
-        maxValue = Math.ceil(maxValue * 4) / 4;
+        minValue = Math.floor(minValue / this.info_values_difference) * this.info_values_difference;
+        maxValue = Math.ceil(maxValue / this.info_values_difference) * this.info_values_difference;
         for (const pair of this.values) {
             const point = this.svg.createSVGPoint();
             const numberOfDays = this.getTotalDaysCount(datesToDraw[0], pair.date);
@@ -56,7 +63,19 @@ export class DateNumberChartControl {
             this.chartDomPoints.push({ value: pair, point: point });
             console.log(`${point.x},${point.y}`);
         }
+        polyline.setAttribute('shape-rendering', 'geometricPrecision');
         this.svg.append(polyline);
+        for (let i = maxValue; i >= minValue; i -= this.info_values_difference) {
+            const span = document.createElement('span');
+            span.innerHTML = i.toFixed(2);
+            this.rowInfoDiv.appendChild(span);
+        }
+        for (const date of datesToDraw) {
+            const span = document.createElement('span');
+            const splittedDate = date.toDateString().toUpperCase().split(' ');
+            span.innerHTML = `${splittedDate[1]} ${splittedDate[3].toString().substring(2)}`;
+            this.columnInfoDiv.appendChild(span);
+        }
     }
     onCurrentPointChanged(value) {
     }
@@ -69,9 +88,9 @@ export class DateNumberChartControl {
         const offsetPxY = (pointValue.point.y / this.viewBoxHeight) * this.svg.clientHeight;
         this.infoDiv.style.setProperty('left', `${offsetPxX - (this.infoDiv.clientWidth / 2)}px`);
         if (!this.currentPointValue || this.currentPointValue !== pointValue) {
-            this.infoDiv.style.setProperty('top', `calc(${offsetPxY - this.infoDiv.clientHeight}px - 1rem)`);
+            this.infoDiv.style.setProperty('top', `calc(${offsetPxY - this.infoDiv.clientHeight}px - 1.5rem)`);
             this.infoDotDiv.style.setProperty('top', `${offsetPxY - (this.infoDotDiv.clientHeight / 2)}px`);
-            this.infoDotDiv.style.setProperty('left', `${(pointValue.point.x / this.viewBoxWidth) * this.svg.clientWidth - (this.infoDotDiv.clientWidth / 2)}px`);
+            this.infoDotDiv.style.setProperty('left', `${(pointValue.point.x / this.viewBoxWidth) * this.svg.clientWidth - (this.infoDotDiv.clientWidth / 2) + (this.baseDiv.clientWidth - this.svg.clientWidth)}px`);
             this.onCurrentPointChanged(pointValue.value);
             this.currentPointValue = pointValue;
         }

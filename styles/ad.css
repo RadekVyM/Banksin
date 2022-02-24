@@ -1,7 +1,3 @@
-section.ad-section {
-    margin-top: 6rem;
-}
-
 section.ad-section .transaction-container {
     display: flex;
     gap: 4rem;

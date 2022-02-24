@@ -56,6 +56,10 @@ section.exchange-section {
     padding: var(--desktop-side-padding);
 }
 
+section.ad-section,
+section.exchange-section {
+    margin-top: 6rem;
+}
 
 small {
     font-weight: 600;

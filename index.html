@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="styles/base.css" type="text/css" />
     <link rel="stylesheet" href="styles/buttons.css" type="text/css" />
+    <link rel="stylesheet" href="styles/charts.css" type="text/css" />
     <link rel="stylesheet" href="styles/opening.css" type="text/css" />
     <link rel="stylesheet" href="styles/ad.css" type="text/css" />
     <link rel="stylesheet" href="styles/exchange.css" type="text/css" />
@@ -168,26 +169,29 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <section class="exchange-section">
-            <div class="chart-control">
-                <svg class="chart-svg" xmlns="http://www.w3.org/2000/svg">
-                </svg>
-                <div class="chart-info">
+    <section class="exchange-section">
+        <div class="chart-control" data-info-values-difference="0.25">
+            <svg class="chart-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+            <div class="chart-column-info"></div>
+            <div class="chart-row-info"></div>
+            <div class="chart-info"></div>
+            <div class="chart-info-dot"></div>
+        </div>
+        <div class="exchange-text">
+            <small>Bank anytime, anywhere</small>
+            <h2>Exchange Rates</h2>
+            <p>Free 24-hour Phone Banking, Online Banking and Mobile Banking allows you to manage your money and
+                complete transactions anywhere in the world at anytime</p>
+            <a class="all-currencies orange-button-link" href="#">
+                <div>All Currencies</div>
+            </a>
+        </div>
+    </section>
 
-                </div>
-                <div class="chart-info-dot"></div>
-            </div>
-            <div class="exchange-text">
-                <small>Bank anytime, anywhere</small>
-                <h2>Exchange Rates</h2>
-                <p>Free 24-hour Phone Banking, Online Banking and Mobile Banking allows you to manage your money and
-                    complete transactions anywhere in the world at anytime</p>
-                <a class="all-currencies orange-button-link" href="#">
-                    <div>All Currencies</div>
-                </a>
-            </div>
-        </section>
+    <section class="upcoming-events-section">
+
     </section>
 
     <script src="./scripts/js/app.js" type="module"></script>

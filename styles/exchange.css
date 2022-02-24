@@ -5,14 +5,8 @@ section.exchange-section {
 }
 
 section.exchange-section .chart-control {
-    position: relative;
-    isolation: isolate;
     width: 100%;
-}
-
-section.exchange-section .chart-control .chart-svg {
-    width: max-content;
-    aspect-ratio: 1/1;
+    margin-block: auto;
 }
 
 section.exchange-section .chart-control .chart-svg polyline {
@@ -25,12 +19,8 @@ section.exchange-section .chart-control .chart-svg polyline {
 }
 
 section.exchange-section .chart-control .chart-info {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    top: 0;
-    left: 0;
-    z-index: 2;
     gap: 0.8rem;
     width: 9rem;
     height: auto;
@@ -38,12 +28,6 @@ section.exchange-section .chart-control .chart-info {
     border-radius: 0.2rem;
     background: var(--primary-light-color);
     box-shadow: 0 0 1rem 0.2rem var(--light-gray-shadow-color);
-    pointer-events: none;
-    transition: top 200ms ease;
-}
-
-section.exchange-section .chart-control .chart-info.hidden {
-    display: none;
 }
 
 section.exchange-section .chart-control .chart-info .chart-info-value {
@@ -61,15 +45,11 @@ section.exchange-section .chart-control .chart-info .chart-info-date {
 }
 
 section.exchange-section .chart-control .chart-info-dot {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 0;
-    left: 0;
     width: 1.5rem;
     height: 1.5rem;
-    pointer-events: none;
     border-radius: 0.75rem;
     background: var(--primary-light-color);
     box-shadow: 0 0 1rem 0.2rem var(--light-gray-shadow-color);
@@ -106,4 +86,40 @@ section.exchange-section .exchange-text h2 {
 
 section.exchange-section .exchange-text p {
     color: var(--secondary-text-color);
+}
+
+section.exchange-section .all-currencies {
+    width: fit-content;
+}
+
+
+@media (max-width: 1300px) {
+
+}
+
+@media (max-width: 1000px) {
+    section.exchange-section {
+        grid-template-columns: auto;
+        grid-template-rows: 1fr auto;
+
+    }
+    section.ad-section .transaction-container {
+        flex-direction: column;
+    }
+
+    section.ad-section .transaction-container .transaction-text {
+        width: 100%;
+    }
+
+    section.ad-section .transaction-container .transaction-photo {
+        width: 100%;
+    }
+}
+
+@media (max-width: 800px) {
+    
+}
+
+@media (max-width: 610px) {
+    
 }

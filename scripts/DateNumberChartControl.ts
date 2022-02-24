@@ -3,14 +3,16 @@ import { DateHelper } from "./DateHelper.js";
 import { DateNumberPair } from "./DateNumberPair.js";
 
 export class DateNumberChartControl implements Control {
-    private readonly viewBoxWidth = 500;
-    private readonly viewBoxHeight = 500;
+    private readonly viewBoxWidth = 600;
+    private readonly viewBoxHeight = 400;
     private readonly chartMarginTop = 2;
     private readonly chartMarginBottom = 2;
     private readonly chartMarginLeft = 3;
     private readonly chartMarginRight = 3;
     private readonly baseDiv: HTMLDivElement;
     protected readonly infoDiv: HTMLDivElement;
+    protected readonly columnInfoDiv: HTMLDivElement;
+    protected readonly rowInfoDiv: HTMLDivElement;
     private readonly infoDotDiv: HTMLDivElement;
     private readonly svg: SVGSVGElement;
     private chartDomPoints: Array<{ value: DateNumberPair, point: DOMPoint }> = [];
@@ -18,11 +20,17 @@ export class DateNumberChartControl implements Control {
     private isMouseAbove: boolean = false;
     private currentPointValue?: { value: DateNumberPair, point: DOMPoint };
 
+    protected get info_values_difference(): number {
+        return parseFloat(this.baseDiv.getAttribute('data-info-values-difference') || '1.0');
+    }
+
     constructor(element: HTMLDivElement) {
         this.baseDiv = element;
         this.svg = this.baseDiv.querySelector('svg') as SVGSVGElement;
         this.infoDiv = this.baseDiv.querySelector('.chart-info') as HTMLDivElement;
         this.infoDotDiv = this.baseDiv.querySelector('.chart-info-dot') as HTMLDivElement;
+        this.columnInfoDiv = this.baseDiv.querySelector('.chart-column-info') as HTMLDivElement;
+        this.rowInfoDiv = this.baseDiv.querySelector('.chart-row-info') as HTMLDivElement;
     }
 
 
@@ -43,6 +51,8 @@ export class DateNumberChartControl implements Control {
 
     private redraw() {
         this.svg.querySelectorAll('*').forEach(n => n.remove());
+        this.columnInfoDiv.querySelectorAll('*').forEach(n => n.remove());
+        this.rowInfoDiv.querySelectorAll('*').forEach(n => n.remove());
         this.chartDomPoints = [];
         const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
         const totalDaysCount = this.getTotalDaysCount(this.values[0].date, this.values[this.values.length - 1].date);
@@ -58,8 +68,8 @@ export class DateNumberChartControl implements Control {
             if (pair.value > maxValue)
                 maxValue = pair.value;
         }
-        minValue = Math.floor(minValue * 4) / 4;
-        maxValue = Math.ceil(maxValue * 4) / 4;
+        minValue = Math.floor(minValue / this.info_values_difference) * this.info_values_difference;
+        maxValue = Math.ceil(maxValue / this.info_values_difference) * this.info_values_difference;
 
         for (const pair of this.values) {
             const point = this.svg.createSVGPoint();
@@ -75,7 +85,21 @@ export class DateNumberChartControl implements Control {
             console.log(`${point.x},${point.y}`);
         }
 
+        polyline.setAttribute('shape-rendering', 'geometricPrecision');
         this.svg.append(polyline);
+
+        for (let i = maxValue; i >= minValue; i -= this.info_values_difference) {
+            const span = document.createElement('span') as HTMLSpanElement;
+            span.innerHTML = i.toFixed(2);
+            this.rowInfoDiv.appendChild(span);
+        }
+
+        for (const date of datesToDraw) {
+            const span = document.createElement('span') as HTMLSpanElement;
+            const splittedDate = date.toDateString().toUpperCase().split(' ');
+            span.innerHTML = `${splittedDate[1]} ${splittedDate[3].toString().substring(2)}`;
+            this.columnInfoDiv.appendChild(span);
+        }
     }
 
     protected onCurrentPointChanged(value: DateNumberPair) {
@@ -91,9 +115,9 @@ export class DateNumberChartControl implements Control {
 
         this.infoDiv.style.setProperty('left', `${offsetPxX - (this.infoDiv.clientWidth / 2)}px`);
         if (!this.currentPointValue || this.currentPointValue !== pointValue) {
-            this.infoDiv.style.setProperty('top', `calc(${offsetPxY - this.infoDiv.clientHeight}px - 1rem)`);
+            this.infoDiv.style.setProperty('top', `calc(${offsetPxY - this.infoDiv.clientHeight}px - 1.5rem)`);
             this.infoDotDiv.style.setProperty('top', `${offsetPxY - (this.infoDotDiv.clientHeight / 2)}px`);
-            this.infoDotDiv.style.setProperty('left', `${(pointValue.point.x / this.viewBoxWidth) * this.svg.clientWidth - (this.infoDotDiv.clientWidth / 2)}px`);
+            this.infoDotDiv.style.setProperty('left', `${(pointValue.point.x / this.viewBoxWidth) * this.svg.clientWidth - (this.infoDotDiv.clientWidth / 2) + (this.baseDiv.clientWidth - this.svg.clientWidth)}px`);
 
             this.onCurrentPointChanged(pointValue.value);
 
