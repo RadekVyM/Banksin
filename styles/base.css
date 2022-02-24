@@ -73,6 +73,16 @@ h2 {
     line-height: 1.1;
 }
 
+section.ad-section .transaction-container .transaction-text,
+section.exchange-section .exchange-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    width: 50%;
+}
+
+
 @media (max-width: 1100px) {
     :root {
         --desktop-side-padding: 0 7rem;

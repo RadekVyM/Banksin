@@ -1,6 +1,13 @@
+section.exchange-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
 section.exchange-section .chart-control {
     position: relative;
     isolation: isolate;
+    width: 100%;
 }
 
 section.exchange-section .chart-control .chart-svg {
@@ -13,7 +20,7 @@ section.exchange-section .chart-control .chart-svg polyline {
     stroke: black;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-width: 0.1rem;
+    stroke-width: 0.05rem;
     shape-rendering: geometricPrecision;
 }
 
@@ -23,7 +30,9 @@ section.exchange-section .chart-control .chart-info {
     flex-direction: column;
     top: 0;
     left: 0;
-    width: 8rem;
+    z-index: 2;
+    gap: 0.8rem;
+    width: 9rem;
     height: auto;
     padding: 1rem;
     border-radius: 0.2rem;
@@ -35,6 +44,20 @@ section.exchange-section .chart-control .chart-info {
 
 section.exchange-section .chart-control .chart-info.hidden {
     display: none;
+}
+
+section.exchange-section .chart-control .chart-info .chart-info-value {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+section.exchange-section .chart-control .chart-info .chart-info-value > span {
+    font-size: 0.8rem;
+}
+
+section.exchange-section .chart-control .chart-info .chart-info-date {
+    color: var(--orange-color);
+    font-size: 0.8rem;
 }
 
 section.exchange-section .chart-control .chart-info-dot {
@@ -62,4 +85,25 @@ section.exchange-section .chart-control .chart-info-dot::after {
 
 section.exchange-section .chart-control .chart-info-dot.hidden {
     display: none;
+}
+
+section.exchange-section .exchange-text {
+    width: 100%;
+    color: var(--secondary-text-color);
+}
+
+section.exchange-section .exchange-text small {
+    color: var(--green-color);
+}
+
+section.exchange-section .exchange-text small::before {
+    color: var(--green-color);
+}
+
+section.exchange-section .exchange-text h2 {
+    color: var(--primary-dark-color);
+}
+
+section.exchange-section .exchange-text p {
+    color: var(--secondary-text-color);
 }
