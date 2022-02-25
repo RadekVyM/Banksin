@@ -76,13 +76,10 @@ export class DateNumberChartControl implements Control {
             const numberOfDays = this.getTotalDaysCount(datesToDraw[0], pair.date);
             const relativePosY = 1 - ((pair.value - minValue) / (maxValue - minValue));
 
-            console.log(`${relativePosY} ${minValue} ${maxValue} ${pair.value}`);
-
             point.x = numberOfDays * dayOffsetX + this.chartMarginLeft;
             point.y = (this.viewBoxHeight - this.chartMarginTop - this.chartMarginBottom) * relativePosY + this.chartMarginTop;
             polyline.points.appendItem(point);
             this.chartDomPoints.push({ value: pair, point: point });
-            console.log(`${point.x},${point.y}`);
         }
 
         polyline.setAttribute('shape-rendering', 'geometricPrecision');
@@ -157,11 +154,11 @@ export class DateNumberChartControl implements Control {
         return Math.round((to.getTime() - from.getTime()) / (3600000 * 24));
     }
 
-    private getDatesOfNthDay(nthDay: Date, minDaysRange: number): Array<Date> {
+    private getDatesOfNthDay(nthDay: Date, minDaysCount: number): Array<Date> {
         const dates: Array<Date> = [];
         let lastDate: Date = nthDay;
 
-        for (let d = 0; d <= minDaysRange; d++) {
+        for (let d = 0; d <= minDaysCount; d++) {
             const date = DateHelper.addDays(nthDay, d * -1);
             if (date.getDate() === nthDay.getDate())
                 dates.push(date);

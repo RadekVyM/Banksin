@@ -1,0 +1,53 @@
+section.upcoming-event-section {
+    display: flex;
+    flex-direction: column;
+    gap: 
+    3rem;
+}
+
+section.upcoming-event-section::before {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: var(--secondary-text-color);
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+section.upcoming-event-section h2 {
+    font-size: 2.4rem;
+}
+
+section.upcoming-event-section .events-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+section.upcoming-event-section .events-container > div {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    width: 100%;
+}
+
+section.upcoming-event-section .events-container > div p {
+    font-size: 0.9rem;
+}
+
+section.upcoming-event-section .events-container > div h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+section.upcoming-event-section .events-container > div a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--orange-color);
+}
+
+@media (max-width: 800px) {
+    section.upcoming-event-section .events-container {
+        flex-wrap: wrap;
+    }
+}

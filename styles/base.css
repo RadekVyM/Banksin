@@ -14,6 +14,7 @@
 
     --largest-font-size: 4rem;
     --large-font-size: 3rem;
+    --medium-font-size: 3rem;
     --mid-font-size: 1.4rem;
 
     --logo-url: url('../images/logo.png');
@@ -52,7 +53,8 @@ section.opening-section .opening-container,
 section.ad-section .transaction-container,
 section.ad-section .ads-container,
 section.ad-section .why-invest-container .investment-container,
-section.exchange-section {
+section.exchange-section,
+section.upcoming-event-section {
     padding: var(--desktop-side-padding);
 }
 
