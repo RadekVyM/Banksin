@@ -7,7 +7,7 @@ footer {
     margin: var(--desktop-side-padding);
     margin-top: 4rem;
     margin-bottom: 4rem;
-    padding: 3rem;
+    padding: 4rem;
     background: var(--primary-dark-color);
 }
 
@@ -58,8 +58,9 @@ footer .social-right-panel .social-container svg {
 }
 
 footer .social-right-panel p {
-    color: var(--secondary-text-color);
     margin: auto;
+    color: var(--secondary-text-color);
+    text-align: center;
 }
 
 @media (max-width: 1300px) {
