@@ -1,7 +1,9 @@
 footer {
+    --row-gap: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr auto;
+    row-gap: var(--row-gap);
     margin: var(--desktop-side-padding);
     margin-top: 4rem;
     margin-bottom: 4rem;
@@ -9,13 +11,13 @@ footer {
     background: var(--primary-dark-color);
 }
 
-footer > div {
+footer > div:not(.social-right-panel) {
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
+    gap: var(--row-gap);
 }
 
-footer > div > div {
+footer > div:not(.social-right-panel) > div {
     --link-gap: 1rem;
     display: flex;
     flex-direction: column;
@@ -24,18 +26,41 @@ footer > div > div {
     max-height: calc(var(--link-gap) * 3 + 5rem);
 }
 
-footer > div h2 {
+footer > div:not(.social-right-panel) h2 {
     font-size: 1.6rem;
     color: var(--primary-light-text-color);
 }
 
-footer > div a {
+footer > div:not(.social-right-panel) a {
     width: fit-content;
     max-width: 10rem;
     text-decoration: none;
     color: var(--secondary-text-color);
 }
 
+footer .social-right-panel {
+    grid-area: 2 / 1 / 2 / 3;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    background: var(--secondary-dark-color);
+}
+
+footer .social-right-panel .social-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+footer .social-right-panel .social-container svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: var(--primary-light-text-color);
+}
+
+footer .social-right-panel p {
+    color: var(--secondary-text-color);
+    margin: auto;
+}
 
 @media (max-width: 1300px) {
     
@@ -52,31 +77,18 @@ footer > div a {
 }
 
 @media (max-width: 1100px) {
-    footer > div > div {
+    footer > div:not(.social-right-panel) > div {
         max-height: none;
     }
 }
 
 @media (max-width: 800px) {
-    section.opening-section::before {
-        display: none;
+    footer .social-right-panel {
+        flex-direction: column;
+        gap: 1.5rem;
     }
 }
 
 @media (max-width: 610px) {
-    section.opening-section .opening-container .opening-text .download-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    section.opening-section #phone-img {
-        max-height: 35rem;
-    }
-
-    section.opening-section .reviews-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-        padding-top: 7.5rem;
-    }
+    
 }
