@@ -11,7 +11,7 @@ section.exchange-section .chart-control {
 
 section.exchange-section .chart-control .chart-svg polyline {
     fill: none;
-    stroke: black;
+    stroke: var(--secondary-dark-color);
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 0.05rem;
@@ -35,7 +35,7 @@ section.exchange-section .chart-control .chart-info .chart-info-value {
     font-weight: 600;
 }
 
-section.exchange-section .chart-control .chart-info .chart-info-value > span {
+section.exchange-section .chart-control .chart-info .chart-info-value>span {
     font-size: 0.8rem;
 }
 
@@ -93,9 +93,7 @@ section.exchange-section .all-currencies {
 }
 
 
-@media (max-width: 1300px) {
-
-}
+@media (max-width: 1300px) {}
 
 @media (max-width: 1000px) {
     section.exchange-section {
@@ -103,6 +101,7 @@ section.exchange-section .all-currencies {
         grid-template-rows: 1fr auto;
 
     }
+
     section.ad-section .transaction-container {
         flex-direction: column;
     }
@@ -116,10 +115,6 @@ section.exchange-section .all-currencies {
     }
 }
 
-@media (max-width: 800px) {
-    
-}
+@media (max-width: 800px) {}
 
-@media (max-width: 610px) {
-    
-}
+@media (max-width: 610px) {}

@@ -24,6 +24,7 @@ export class DateNumberChartControl implements Control {
         return parseFloat(this.baseDiv.getAttribute('data-info-values-difference') || '1.0');
     }
 
+
     constructor(element: HTMLDivElement) {
         this.baseDiv = element;
         this.svg = this.baseDiv.querySelector('svg') as SVGSVGElement;

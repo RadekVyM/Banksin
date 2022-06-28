@@ -91,7 +91,7 @@ section.opening-section .opening-container .opening-text small::before {
     color: var(--secondary-text-color);
 }
 
-section.opening-section .opening-container .opening-text h1 {
+section.opening-section .opening-container .opening-text h2 {
     font-size: var(--largest-font-size);
     font-weight: 600;
     color: var(--primary-light-text-color);
